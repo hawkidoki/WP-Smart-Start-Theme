@@ -151,4 +151,4 @@ Si Contact Form 7 est activé après l'activation du thème, alors les champs se
 
 ## Note
 
-Ne connaissant pas le processus de vérfication de WP Media, j'ai préféré ne pas créer de script d'installation (Ajout de posts/pages/contenus etc...). Afin de garantir le fonctionnement optimal d uthème, il est nécessaire de correctement créer et mettre à jour les Pages & Options.
+Ne connaissant pas le processus de vérfication de WP Media, j'ai préféré ne pas créer de script d'installation (Ajout de posts/pages/contenus etc...). Afin de garantir un fonctionnement optimal, il est nécessaire de correctement créer et mettre à jour les Pages & Options.
