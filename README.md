@@ -55,11 +55,11 @@ Plusieurs avantages:
 + Possibilité de gérer l'URL de l'archive de manière dynamique
 + Possibilité d'ajouter des champs personnalisés et du contenu afin de les afficher en front au dessus le boucle de posts principale
 
-Les permaliens et règles d'écritures ne sont pas perturbés, WordPress continue d'utiliser l'archive de post type native. Nous y ajoutons simplement une boucle supplémentaire en récupérant la "page d'archive" afin d'afficher du contenu ou des champs personnalisés. Pour cela, nous utiliserons une boucle personnalisée `have_archive_page()` & `the_archive_page()`. 
+Les permaliens et règles d'écritures ne sont pas perturbés, WordPress continue d'utiliser l'archive de post type native. Nous y ajoutons simplement les données récupérées de la "page d'archive". Pour cela nous utiliserons notre propre boucle `have_archive_page()` & `the_archive_page()`. 
 
 ## Templating & Section
 
-Les gabarits de posts et taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Ceux-ci sont découpés en différentes sections, stockés dans le dossier `/sections` afin d'être facilement ré-utilisables.
+Les gabarits de posts et taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Ceux-ci sont découpés en différentes sections, stockés dans le dossier `/sections` afin d'être facilement ré-utilisables. A noter qu'il est toujours possible de ré-écrire par dessus ces templates en créant un fichier `archive-project.php` à la racine du thème.
 
 Pour inclure les sections, nous allons passer par une fonction personnalisée: `wpsst_section()`. C'est une sorte de fonction `get_template_part()` avancée avec gestion de `WP_Query` et de `query_vars`.
 
