@@ -32,13 +32,14 @@ Plugins requis:
 + Créer une nouvelle page "Team"
     + Editer la page "Team". Dans la metabox à droite "Post Type Archive", définir le post type "Team" & sauvegarder
     + Editer les champs personnalisés
-    + Définir un contenu de page
     + Sauvegarder la page de nouveau
 
 + Dans Réglages > Lecture: Définir une page d'accueil statique: "Homepage"
     + Editer la page "Homepage" et sauvegarder les champs personnalisés.
 + Dans Réglages > Lecture: Définir une page de blog: "Blog"
-    + Editer la page "Blog" et sauvegarder les champs personnalisés.
+    + Editer la page "Blog" et modifier les champs personnalisés.
+    + Définir un contenu de page
+    + Sauvegarder la page
 
 + Créer un nouveau Menu & attribuer l'emplacement "Menu Header"
 + Créer un nouveau Menu & attribuer l'emplacement "Footer"
@@ -114,3 +115,7 @@ Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta
 + Les commentaires sont fonctionnels
 + Les medias sociaux en pied de page sont paramètrables via les options
 + Et d'autres petites surprises :)
+
+## Note
+
+Ne connaissant pas votre processus de vérfication de thème, j'ai préféré ne pas faire de script d'installation (Création des pages, ajout des contenus etc...). Ainsi, il est nécessaire de correctement sauvegarder toutes les Pages & Options afin que le contenu s'affiche correctement en front.
