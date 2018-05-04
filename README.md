@@ -56,27 +56,27 @@ Notre thème va se découper en plusieurs gabarits (Page d'accueil, archive de p
 
 ```
 array(
-	'template'      => 'sections/loop.php', // Fichier de Template par défaut: /wp-content/themes/<theme>/loop.php
-	'not_found'     => false, 	            // Fichier de Template en cas de résultat non trouvé
-	'pagination'    => false, 	            // Paramètre de pagination. Utilisé par le fichier de Template. true | false
-	'query'         => array(), 	        // Arguments de WP_Query. Si vide, alors utiliser la WP_Query globale
-	'query_addon'   => false, 	            // Utiliser l'argument 'query' pour l'ajouter à la WP_Query globale. true | false
-	'result'        => array(), 	        // Injecter directement les résultats d'une Query antérieur. Bypass l'argument 'query'
-	'title'         => false, 	            // Afficher un titre
-	'comments'      => false, 	            // Afficher les commentaires
-	'exclude'       => array(
-		'add'   => true, 		            // Ajouter les résultats dans la liste des posts à exclure pour les prochains appels. true | false
-		'get'   => true 		            // Utiliser la liste des posts à exclure pour cette Query. true | false
-	),
-	'options'       => array(), 	        // Tableau d'options personnalisés.
-	'wrapper'       => array(
-		'title'     => false, 	            // Afficher le titre avant le wrapper au lieu d'être à l'intérieur
-		'element'   => 'section', 	        // Element <div> qui servira de conteneur à notre Template
-		'attr'      => array(
-			'id'        => '', 	            // Ajouter un attribut id=""
-			'class'     => '', 	            // Ajouter un attribut class=""
-			'style'     => '' 	            // Ajouter un attribut style=""
-		), 				                    // Note: Il est possible d'ajouter son propre attribut personnalisé ici.
-	)
+    'template'      => 'sections/loop.php', // Fichier de Template par défaut: /wp-content/themes/<theme>/loop.php
+    'not_found'     => false,               // Fichier de Template en cas de résultat non trouvé
+    'pagination'    => false,               // Paramètre de pagination. Utilisé par le fichier de Template. true | false
+    'query'         => array(),             // Arguments de WP_Query. Si vide, alors utiliser la WP_Query globale
+    'query_addon'   => false,               // Utiliser l'argument 'query' pour l'ajouter à la WP_Query globale. true | false
+    'result'        => array(),             // Injecter directement les résultats d'une Query antérieur. Bypass l'argument 'query'
+    'title'         => false,               // Afficher un titre
+    'comments'      => false,               // Afficher les commentaires
+    'exclude'       => array(
+        'add'   => true,                    // Ajouter les résultats dans la liste des posts à exclure pour les prochains appels. true | false
+        'get'   => true                     // Utiliser la liste des posts à exclure pour cette Query. true | false
+    ),
+    'options'       => array(),             // Tableau d'options personnalisés.
+    'wrapper'       => array(
+        'title'     => false,               // Afficher le titre avant le wrapper au lieu d'être à l'intérieur
+        'element'   => 'section',           // Element <div> qui servira de conteneur à notre Template
+        'attr'      => array(
+            'id'        => '',              // Ajouter un attribut id=""
+            'class'     => '',              // Ajouter un attribut class=""
+            'style'     => ''               // Ajouter un attribut style=""
+        ),                                  // Note: Il est possible d'ajouter son propre attribut personnalisé ici.
+    )
 );
 ```
