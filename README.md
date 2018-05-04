@@ -108,7 +108,7 @@ Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta
 
 ## Contact Form 7
 
-Si Contact Form 7 est activé après l'activation du thème, alors les champs seront automatiquement mis à jour àl'aide du hook `wpcf7_default_template`. Néanmoins, si l'installation est antérieure, il faudra intégrer le formulaire à la main:
+Si Contact Form 7 est activé après l'activation du thème, alors les champs seront automatiquement mis à jour. Néanmoins, si l'installation est antérieure à l'activation du thème, alors il faudra intégrer le formulaire manuellement:
 
 ```
 <p class="input-block">
