@@ -24,7 +24,7 @@ Plugins requis:
 + Créer une nouvelle page "Blog"
 + Créer une nouvelle page "Contact"
     + Editer la page "Contact", définir en Page Template: "Contact" & sauvegarder
-    + Mettre à jour les champs personnalisés et sauvegarder de nouveau
+    + Mettre à jour les champs personnalisés, choisir un formulaire Contact Form 7 et sauvegarder de nouveau
     
 + Créer une nouvelle page "Projects"
     + Editer la page "Projects". Dans la metabox à droite "Post Type Archive", définir le post type "Project" & sauvegarder
@@ -107,3 +107,10 @@ Par exemple pour le `post_type` `project`, nous ajoutons les arguments `wpsst_te
 La majorité des requêtes vers la base de données sont effectués avant l'affichage HTML pour optimiser le temps de traitement. Ainsi, nous stockons les options (Adresse, Ville, Pays, Google Maps API etc...) dans des `query_vars` globales.
 
 Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
+
+## Bonus
+
++ Google Maps géolocalise désormais l'adresse rentré dans les options.
++ Les commentaires sont fonctionnels
++ Les medias sociaux en pied de page sont paramètrables via les options
++ Et d'autres petites surprises :)
