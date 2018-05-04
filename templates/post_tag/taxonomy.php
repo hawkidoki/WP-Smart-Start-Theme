@@ -5,7 +5,7 @@
         
             <header class="page-header">
             
-                <h1 class="page-title"><?php the_field('slogan'); ?></h1>
+                <h1 class="page-title"><?php the_field('blog_slogan'); ?></h1>
                 
             </header><!-- end .page-header -->
             
