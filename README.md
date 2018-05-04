@@ -13,68 +13,60 @@ Plugins requis:
 + Contact Form 7
 + WP-PageNavi
 
-## Description des fichiers
+## Installation
 
-### Includes: Core
++ Activer le Thème
++ Activer Advanced Custom Fields Pro
++ Activer Contact Form 7
++ Activer WP-PageNavi
 
-##### /includes/core/admin.php
-_Administration & Gestion de l'ordre du menu_
 
-Petit hook simple pour simplement afficher le `post_type` `page` en premier dans le menu, et ajout d'un séparateur avec les autres post types.
++ Créer une nouvelle page "Homepage"
++ Créer une nouvelle page "Blog"
++ Créer une nouvelle page "Contact"
+    + Editer la page "Contact", définir en Page Template: Contact & sauvegarder
+    + Mettre à jour les champs personnalisés et sauvegarder de nouveau
+    
++ Créer une nouvelle page "Projects"
+    + Editer la page "Projects". Dans la metabox à droite "Post Type Archive": définir le post type "Project" & sauvegarder
+    + Editer les champs personnalisés et sauvegarder de nouveau
++ Créer une nouvelle page "Team"
+    + Editer la page "Team". Dans la metabox à droite "Post Type Archive": définir le post type "Team" & sauvegarder
+    + Editer les champs personnalisés
+    + Définir un contenu de page
+    + Sauvegarder la page de nouveau
 
-##### /includes/core/comments.php
-_Callback des commentaires_
++ Dans les Réglages > Lecture: Définir une page d'accueil statique: "Homepage"
+    + Editer la page "Homepage" et sauvegarder les champs personnalisés.
++ Dans les Réglages > Lecture: Définir une page de blog: "Blog"
+    + Editer la page "Blog" et sauvegarder les champs personnalisés.
 
-Définition d'une fonction afin d'afficher les templates de commentaires confofément à la maquette HTML.
++ Créer un nouveau Menu & attribuer l'emplacement "Menu Header"
++ Créer un nouveau Menu & attribuer l'emplacement "Footer"
++ Créer un nouveau Menu & attribuer l'emplacement "Sub Footer"
 
-##### /includes/core/enqueue.php
-_Scripts JS & Styles CSS_
++ Dans l'administration aller dans le menu Options, définir les champs et sauvegarder
 
-Ici, nous allons ajouter tous nos scripts et feuilles de styles css. A noter que nous allons enqueue des scripts en footer pour encore une fois coller au maximum à la maquette fournie. Afin de correctement enqueue jQuery en footer, nous utiliserons `wp_scripts()->add_date('jquery', 'group', 1)`. Les variables Javascript seront ajouté via le fameux `wp_localize_script()`.
++ Créer des nouveaux Projets, Catégories de Projets et Skills de Projets
++ Créer des nouveaux membres de Team
 
-Cerise sur le gateau, nous ajoutons une variable pour la géolocalisation de l'adresse définie dans le back office.
+## Post Type Archive
 
-##### /includes/core/excerpt.php
-_Fonctions d'extraits personnalisés_
+Fonctionnalité personnalisé qui permet d'attribuer des pages en tant que Page d'archive de `post_type`. Les URLs de ces pages définissent l'argument `has_archive` de chaque post type.
 
-Pour plus facilement gérer les extraits WordPress, nous allons définir nos propres fonctions avec un argument `$length`. Ainsi nous pourrons dynamiquement afficher des extraits de taille différente, suivant la partie du thème.
+Plusieurs avantages:
++ Possibilité de gérer l'URL de l'archive de manière dynamique
++ Possibilité d'ajotuer des champs personnalisés, contenu et de les afficher en front au dessus le boucle de posts
 
-##### /includes/core/helpers.php
-_Fonctions d'aides génériques_
+Afin de récupérer le contenu et les champs personnalisés de cette page d'archive, nous utiliserons une boucle personnalisé `have_archive_page()` & `the_archive_page()`. Les permaliens et règles d'écritures ne sont aucunement perturbés, WordPress continue d'utiliser l'archive de post type native, nous y ajoutons simplement une boucle supplémentaire.
 
-Le classique `helpers.php` avec deux fonctions simples:
-+ `wpsst_has_plugin()` pour vérifier si un plugin est un actif lorsqu'on en a beoin
-+ `wp_parse_args_recursive()` pour attribuer des valeurs par défaut à certains de tableaux associatifs
+## Templating & Section
 
-##### /includes/core/homepage.php
-_Gestion de la page d'accueil_
+Chaque gabarit est découpé en différentes `sections` afin de gagner en visibilité.
 
-Nous ajoutons ici un hook sur `template_include` afin de forcer l'utilisation de notre fichier `/templates/homepage.php`. Nous rajouter aussi l'éditeur WordPress qui est supprimé par défaut lorsqu'une page est définie en tant que page d'accueil.
+Article original: https://hwk.fr/blog/wordpress-afficher-des-templates-parts-avec-des-requetes-parametres-integres
 
-##### /includes/core/login.php
-_Formulaire de Login / Register_
-
-Ajout du Logo et de l'URL du site sur les pages de connexion & enregistrement en utilisant notre propre version du `custom_logo()` (voir ci-après).
-
-##### /includes/core/logo.php
-_Fonctions de gestion du Logo_
-
-Nous utilisons la fonction native de logo WordPress. néanmoins afin de définir un placeholder, nous allons passer nos propres fonctions `wpsst_get_the_logo()`, `wpsst_get_logo_url()`, `wpsst_get_logo_alt()`. Ainsi nous pouvons garantir que dans tous les cas le logo par défaut "SmartStart" s'affichera.
-
-##### /includes/core/menu.php
-_Ajout des menus_
-
-Ici nous ajoutons les 3 menus du thème: `menu-header`, `menu-footer` & `menu-sub-footer`. Pour coller à 100% à la maquette, nous passons le filtre `nav_menu_css_class` afin d'ajouter une class `current`.
-
-##### /includes/core/query.php
-_Système de gestion des `pre_get_posts` pour les posts types & taxonomies_
-
-Nous rentrons ici dans le vif du sujet avec une fonction maison afin de facilement gérer le nombre de posts_per_page pour les archives de `post_types` et les termes de `taxonomies`.
-
-##### /includes/core/section.php
-_Fonction de templating et d'include_
-
-Notre thème va se découper en plusieurs gabarits (Page d'accueil, archive de post types, single de post type etc...). Mais surtout, nous allons découper leur contenu en `section`. Cette fonction `wpsst_section()` est une sorte de `get_template_part()` avancé avec gestion de `WP_Query` et de `query_vars`. Voici les arguments disponibles:
+Cette fonction `wpsst_section()` est une sorte de `get_template_part()` avancé avec gestion de `WP_Query` et de `query_vars`. Voici les arguments disponibles:
 
 ```
 array(
@@ -102,3 +94,9 @@ array(
     )
 );
 ```
+
+## Requêtes et traitement
+
+La majorité des requêtes vers la base de données sont effectués avant l'affichage front pour optimiser le temps de es dernières. Ainsi, nous stockons les options (adresse, ville, pays, Google Maps API etc...) dans des `query_vars` globales.
+
+pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
