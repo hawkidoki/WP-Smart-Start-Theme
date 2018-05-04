@@ -91,9 +91,14 @@ function wpsst_post_type_project_posts_results($posts, $query){
                 'post__not_in'      => (!empty($featured_image) ? array($featured_image) : array())
             ));
             
-            $post->wpsst_gallery = false;
+            $post->wpsst_project_gallery = false;
             if($gallery->have_posts())
-                $post->wpsst_gallery = $gallery;
+                $post->wpsst_project_gallery = $gallery;
+            
+            // Project Website
+            $post->wpsst_project_website = false;
+            if($website = get_field('project_website', $post->ID))
+                $post->wpsst_project_website = $website;
         }
     }
 

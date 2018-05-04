@@ -6,7 +6,7 @@
 
             <header class="page-header">
 
-                <h1 class="page-title align-left">Things we have done</h1>
+                <h1 class="page-title align-left"><?php _e('Things we have done', 'wpsst'); ?></h1>
                 
                 <a href="<?php echo get_post_type_archive_link('project'); ?>" class="button no-bg medium align-right">
                     <?php _e('All Projects', 'wpsst'); ?> <img src="img/icon-grid.png" alt="" class="icon">
@@ -30,7 +30,7 @@
 
             <div id="main">
             
-                <?php if(($gallery = $post->wpsst_gallery)): ?>
+                <?php if(($gallery = $post->wpsst_project_gallery)): ?>
                     <div class="image-gallery-slider">
                         <ul>
                             <?php while($gallery->have_posts()): $gallery->the_post(); ?>
@@ -65,9 +65,9 @@
                     </ul>
                 <?php } ?>
                 
-                <?php if($website = get_field('project_website')){ ?>
+                <?php if($website = $post->wpsst_project_website){ ?>
                     <p>
-                        <a href="<?php echo $website; ?>" class="button"><?php _e('Launch website', 'wpsst'); ?></a>
+                        <a href="<?php echo $website; ?>" class="button" target="_blank"><?php _e('Launch website', 'wpsst'); ?></a>
                     </p>
                 <?php } ?>
 
