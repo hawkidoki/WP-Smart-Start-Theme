@@ -61,7 +61,7 @@ Les permaliens et règles d'écritures ne sont pas perturbés, WordPress continu
 
 ## Templating & Section
 
-Les gabarits de posts et taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Ceux-ci sont découpés en différentes sections, stockés dans le dossier `/sections` afin d'être facilement ré-utilisables. A noter qu'il est toujours possible de ré-écrire par dessus ces templates en créant un fichier `archive-project.php` à la racine du thème.
+Les gabarits de posts et taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Ceux-ci sont découpés en différentes sections, stockés dans le dossier `/sections` afin de naturellement les distinguer.
 
 Pour inclure les sections, nous allons passer par une fonction personnalisée: `wpsst_section()`. C'est une sorte de fonction `get_template_part()` avancée avec gestion de `WP_Query` et de `query_vars`.
 
@@ -100,7 +100,7 @@ array(
 
 En plus de gérer les pages d'archive dans le back office, nous pouvons définir des arguments personnalisés lors de la déclaration des `post_types` et `taxonomies`.
 
-Par exemple pour le `post_type` `project`, nous ajoutons les arguments `wpsst_template_archive`, `wpsst_template_single` & `wpsst_posts_per_page` directement dans le hook `init` afin de définir des templates spécifiques et une valeur `posts_per_page` en `pre_get_posts` de l'archive. (Voir fichier `/includes/post_type/project.php`).
+Par exemple pour le `post_type project`, nous ajoutons les arguments `wpsst_template_archive`, `wpsst_template_single` & `wpsst_posts_per_page` directement dans le hook `init` afin de définir des templates spécifiques et une valeur `posts_per_page` en `pre_get_posts` de l'archive. (Voir fichier `/includes/post_type/project.php`).
 
 ## Requêtes et traitements
 
