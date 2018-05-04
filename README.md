@@ -44,6 +44,8 @@ Plugins requis:
 
 + Aller dans le menu Options, définir les champs personnalisés et sauvegarder
 
++ Aller dans Apprence > Widgets & Ajouter des Widgets
+
 + Créer de nouveaux Projets, Catégories et Skills
 + Créer de nouveaux membres de Team
 
