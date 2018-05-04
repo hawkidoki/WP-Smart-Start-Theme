@@ -139,7 +139,7 @@ Si Contact Form 7 est activé après l'activation du thème, alors les champs se
 
 ## Bonus
 
-+ Géolocalisation Google Maps de l'adresse entré dans les options.
++ Géolocalisation Google Maps de l'adresse
 + Les commentaires sont fonctionnels
 + Les medias sociaux en pied de page sont paramètrables via les options
 + Et d'autres petites surprises :)
