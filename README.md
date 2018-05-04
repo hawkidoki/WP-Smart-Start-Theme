@@ -55,15 +55,15 @@ Fonctionnalité personnalisée qui permet d'attribuer des pages en tant que Page
 
 Plusieurs avantages:
 + Possibilité de gérer l'URL de l'archive de manière dynamique
-+ Possibilité d'ajouter des champs personnalisés et du contenu afin de les afficher en front au dessus le boucle de posts principale
++ Possibilité d'ajouter des champs personnalisés afin de les afficher au dessus la boucle de posts principale
 
-Les permaliens et règles d'écritures ne sont pas perturbés, WordPress continue d'utiliser l'archive de post type native. Nous y ajoutons simplement les données récupérées de la "page d'archive". Pour cela nous utiliserons notre propre boucle `have_archive_page()` & `the_archive_page()`. 
+Les permaliens et règles d'écritures restent inchangés, WordPress continue d'utiliser l'archive de post type native. Nous y ajoutons simplement les données récupérées de la "page d'archive". Pour cela nous utiliserons notre propre boucle `have_archive_page()` & `the_archive_page()`. 
 
 ## Templating & Section
 
-Les gabarits de posts et taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Ceux-ci sont découpés en différentes sections, stockés dans le dossier `/sections` afin de naturellement les distinguer.
+Les gabarits (archive/single/term etc...) se situent dans le dossier `/templates` afin de gagner en visibilité. Ceux-ci sont découpés en différentes sections, stockés dans le dossier `/sections` afin de naturellement les distinguer.
 
-Pour inclure les sections, nous allons passer par une fonction personnalisée: `wpsst_section()`. C'est une sorte de fonction `get_template_part()` avancée avec gestion de `WP_Query` et de `query_vars`.
+Pour inclure les sections, nous allons passer par une fonction personnalisée: `wpsst_section()`. C'est une sorte de fonction `get_template_part()` avancée avec gestion de `WP_Query`, `query_vars` et bien plus!
 
 Article original: https://hwk.fr/blog/wordpress-afficher-des-templates-parts-avec-des-requetes-parametres-integres
 
@@ -96,17 +96,22 @@ array(
 );
 ```
 
-## Flexibilité du Templating
+## Paramètrage des Post Types & Taxonomies
 
-En plus de gérer les pages d'archive dans le back office, nous pouvons définir des arguments personnalisés lors de la déclaration des `post_types` et `taxonomies`.
+En plus de pouvoir gérer les pages d'archive de post type dans le back office, il est possible d'ajouter des arguments personnalisés lors de la déclaration des `post_types` et `taxonomies`.
 
-Par exemple pour le `post_type project`, nous ajoutons les arguments `wpsst_template_archive`, `wpsst_template_single` & `wpsst_posts_per_page` directement dans le hook `init` afin de définir des templates spécifiques et une valeur `posts_per_page` en `pre_get_posts` de l'archive. (Voir fichier `/includes/post_type/project.php`).
+Par exemple, dans la déclaration du Post Type `project`, nous ajoutons les arguments `wpsst_template_archive` et `wpsst_template_single` afin de définir des templates spécifiques pour l'archive et la vue single. L'argument `wpsst_posts_per_page` définira automatiquement un paramètre `posts_per_page` en `pre_get_posts` pour l'archive.
+
+Fichiers relatifs:
++ `/includes/post_type/project.php`
++ `/includes/core/template.php`
++ `/includes/core/query.php`
 
 ## Requêtes et traitements
 
-La majorité des requêtes vers la base de données sont effectués avant l'affichage HTML pour optimiser le temps de traitement. Ainsi, nous stockons les options (Adresse, Ville, Pays, Google Maps API etc...) dans des `query_vars` globales.
+La majorité des requêtes de base de données sont effectuées avant l'affichage HTML afin d'optimiser leurs temps de traitement. Ainsi, nous stockons les options (Adresse, Ville, Pays, Google Maps API etc...) dans des `query_vars` globales.
 
-Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
+Pour les posts, nous stockons les données additionnelles (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
 
 ## Contact Form 7
 
@@ -146,4 +151,4 @@ Si Contact Form 7 est activé après l'activation du thème, alors les champs se
 
 ## Note
 
-Ne connaissant pas votre processus de vérfication de thème, j'ai préféré ne pas faire de script d'installation (Création des pages, ajout des contenus etc...). Ainsi, il est nécessaire de créer et mettre à jour toutes les Pages & Options afin de correctement sauvegarder les données des champs personnalisés.
+Ne connaissant pas le processus de vérfication de WP Media, j'ai préféré ne pas créer de script d'installation (Ajout de posts/pages/contenus etc...). Afin de garantir le fonctionnement optimal d uthème, il est nécessaire de correctement créer et mettre à jour les Pages & Options.
