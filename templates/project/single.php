@@ -6,7 +6,13 @@
 
             <header class="page-header">
 
-                <h1 class="page-title align-left"><?php _e('Things we have done', 'wpsst'); ?></h1>
+                <?php if(have_archive_page()): ?>
+                    <?php while(have_archive_page()): the_archive_page(); ?>
+
+                        <h1 class="page-title align-left"><?php echo get_field('projects_slogan'); ?></h1>
+                        
+                    <?php endwhile; wp_reset_postdata(); ?>
+                <?php endif; ?>
                 
                 <a href="<?php echo get_post_type_archive_link('project'); ?>" class="button no-bg medium align-right">
                     <?php _e('All Projects', 'wpsst'); ?> <img src="img/icon-grid.png" alt="" class="icon">
