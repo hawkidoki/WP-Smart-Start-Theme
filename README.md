@@ -29,8 +29,7 @@ Plugins requis:
     + Editer les champs personnalisés et sauvegarder de nouveau
 + Créer une nouvelle page "Team"
     + Editer la page "Team". Dans la metabox à droite "Post Type Archive", définir le post type "Team" & sauvegarder
-    + Editer les champs personnalisés
-    + Sauvegarder la page de nouveau
+    + Editer les champs personnalisés et sauvegarder de nouveau
 
 + Dans Réglages > Lecture: Définir une page d'accueil statique: "Homepage"
     + Editer la page "Homepage" et sauvegarder les champs personnalisés.
@@ -43,7 +42,7 @@ Plugins requis:
 + Créer un nouveau Menu & attribuer l'emplacement "Footer"
 + Créer un nouveau Menu & attribuer l'emplacement "Sub Footer"
 
-+ Dans l'administration aller dans le menu Options, définir les champs et sauvegarder
++ Aller dans le menu Options, définir les champs personnalisés et sauvegarder
 
 + Créer de nouveaux Projets, Catégories et Skills
 + Créer de nouveaux membres de Team
@@ -116,4 +115,4 @@ Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta
 
 ## Note
 
-Ne connaissant pas votre processus de vérfication de thème, j'ai préféré ne pas faire de script d'installation (Création des pages, ajout des contenus etc...). Ainsi, il est nécessaire de correctement sauvegarder toutes les Pages & Options afin que le contenu s'affiche correctement en front.
+Ne connaissant pas votre processus de vérfication de thème, j'ai préféré ne pas faire de script d'installation (Création des pages, ajout des contenus etc...). Ainsi, il est nécessaire de créer et mettre à jour toutes les Pages & Options afin de correctement sauvegarder les données des champs personnalisés.
