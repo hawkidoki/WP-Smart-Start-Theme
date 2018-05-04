@@ -1,0 +1,1 @@
+# WP-Smart-Start-Theme
