@@ -106,6 +106,35 @@ La majorité des requêtes vers la base de données sont effectués avant l'affi
 
 Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
 
+## Contact Form 7
+
+Si Contact Form 7 est activé après l'activation du thème, alors les champs seront automatiquement mis à jour àl'aide du hook `wpcf7_default_template`. Néanmoins, si l'installation est antérieure, il faudra intégrer le formulaire à la main:
+
+```
+<p class="input-block">
+    <label for="contact-name"><strong>Name</strong> (required)</label>
+    [text* contact-name id:contact-name]
+</p>
+<p class="input-block">
+    <label for="contact-email"><strong>Email</strong> (required)</label>
+    [email* contact-email id:contact-email]
+</p>
+<p class="input-block">
+    <label for="contact-subject"><strong>Subject</strong></label>
+    [text contact-subject id:contact-subject]
+</p>
+<p class="textarea-block">
+    <label for="contact-message"><strong>Your Message</strong> (required)</label>
+    [textarea* contact-message id:contact-message 88x6]
+</p>
+<div class="hidden">
+    <label for="contact-spam-check">Do not fill out this field:</label>
+    [text contact-spam-check id:contact-spam-check]
+</div>
+<div class="clear"></div>
+[submit "Submit"]
+```
+
 ## Bonus
 
 + Géolocalisation Google Maps de l'adresse entré dans les options.
