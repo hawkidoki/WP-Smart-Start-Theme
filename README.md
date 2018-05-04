@@ -51,19 +51,19 @@ Plugins requis:
 
 ## Post Type Archive
 
-Fonctionnalité personnalisé qui permet d'attribuer des pages en tant que Page d'archive de `post_type`. Les slugs de ces pages définissent l'argument `has_archive` de chaque post type.
+Fonctionnalité personnalisée qui permet d'attribuer des pages en tant que Page d'archive de `post_type`. Les slugs de ces pages définissent l'argument `has_archive` de chaque post type.
 
 Plusieurs avantages:
 + Possibilité de gérer l'URL de l'archive de manière dynamique
-+ Possibilité d'ajouter des champs personnalisés, contenu et de les afficher en front au dessus le boucle de posts principale
++ Possibilité d'ajouter des champs personnalisés et du contenu afin de les afficher en front au dessus le boucle de posts principale
 
-Afin de récupérer le contenu et les champs personnalisés de cette page d'archive, nous utiliserons une boucle personnalisée `have_archive_page()` & `the_archive_page()`. Les permaliens et règles d'écritures ne sont pas perturbés, WordPress continue d'utiliser l'archive de post type native. Nous y ajoutons simplement une boucle supplémentaire en récupérant la page dite d'archive.
+Les permaliens et règles d'écritures ne sont pas perturbés, WordPress continue d'utiliser l'archive de post type native. Nous y ajoutons simplement une boucle supplémentaire en récupérant la "page d'archive" afin d'afficher du contenu ou des champs personnalisés. Pour cela, nous utiliserons une boucle personnalisée `have_archive_page()` & `the_archive_page()`. 
 
 ## Templating & Section
 
-Les gabarits de post types, taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Les garabits sont eux découpés en différentes sections dans le dossier `/sections`.
+Les gabarits de posts et taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Ceux-ci sont découpés en différentes sections, stockés dans le dossier `/sections` afin d'être facilement ré-utilisables.
 
-Pour inclure les sections, nous allons passer par une fonction personnalisée. `wpsst_section()` est une sorte de `get_template_part()` avancé avec gestion de `WP_Query` et de `query_vars`. 
+Pour inclure les sections, nous allons passer par une fonction personnalisée: `wpsst_section()`. C'est une sorte de fonction `get_template_part()` avancée avec gestion de `WP_Query` et de `query_vars`.
 
 Article original: https://hwk.fr/blog/wordpress-afficher-des-templates-parts-avec-des-requetes-parametres-integres
 
@@ -96,8 +96,8 @@ array(
 );
 ```
 
-## Requêtes et traitement
+## Requêtes et traitements
 
-La majorité des requêtes vers la base de données sont effectués avant l'affichage front pour optimiser le temps de traitement. Ainsi, nous stockons les options (adresse, ville, pays, Google Maps API etc...) dans des `query_vars` globales.
+La majorité des requêtes vers la base de données sont effectués avant l'affichage HTML pour optimiser le temps de traitement. Ainsi, nous stockons les options (adresse, ville, pays, Google Maps API etc...) dans des `query_vars` globales.
 
 Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
