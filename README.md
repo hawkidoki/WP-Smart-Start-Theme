@@ -20,25 +20,24 @@ Plugins requis:
 + Activer Contact Form 7
 + Activer WP-PageNavi
 
-
 + Créer une nouvelle page "Homepage"
 + Créer une nouvelle page "Blog"
 + Créer une nouvelle page "Contact"
-    + Editer la page "Contact", définir en Page Template: Contact & sauvegarder
+    + Editer la page "Contact", définir en Page Template: "Contact" & sauvegarder
     + Mettre à jour les champs personnalisés et sauvegarder de nouveau
     
 + Créer une nouvelle page "Projects"
-    + Editer la page "Projects". Dans la metabox à droite "Post Type Archive": définir le post type "Project" & sauvegarder
+    + Editer la page "Projects". Dans la metabox à droite "Post Type Archive", définir le post type "Project" & sauvegarder
     + Editer les champs personnalisés et sauvegarder de nouveau
 + Créer une nouvelle page "Team"
-    + Editer la page "Team". Dans la metabox à droite "Post Type Archive": définir le post type "Team" & sauvegarder
+    + Editer la page "Team". Dans la metabox à droite "Post Type Archive", définir le post type "Team" & sauvegarder
     + Editer les champs personnalisés
     + Définir un contenu de page
     + Sauvegarder la page de nouveau
 
-+ Dans les Réglages > Lecture: Définir une page d'accueil statique: "Homepage"
++ Dans Réglages > Lecture: Définir une page d'accueil statique: "Homepage"
     + Editer la page "Homepage" et sauvegarder les champs personnalisés.
-+ Dans les Réglages > Lecture: Définir une page de blog: "Blog"
++ Dans Réglages > Lecture: Définir une page de blog: "Blog"
     + Editer la page "Blog" et sauvegarder les champs personnalisés.
 
 + Créer un nouveau Menu & attribuer l'emplacement "Menu Header"
@@ -47,26 +46,28 @@ Plugins requis:
 
 + Dans l'administration aller dans le menu Options, définir les champs et sauvegarder
 
-+ Créer des nouveaux Projets, Catégories de Projets et Skills de Projets
-+ Créer des nouveaux membres de Team
++ Créer de nouveaux Projets, Catégories et Skills
++ Créer de nouveaux membres de Team
 
 ## Post Type Archive
 
-Fonctionnalité personnalisé qui permet d'attribuer des pages en tant que Page d'archive de `post_type`. Les URLs de ces pages définissent l'argument `has_archive` de chaque post type.
+Fonctionnalité personnalisé qui permet d'attribuer des pages en tant que Page d'archive de `post_type`. Les slugs de ces pages définissent l'argument `has_archive` de chaque post type.
 
 Plusieurs avantages:
 + Possibilité de gérer l'URL de l'archive de manière dynamique
-+ Possibilité d'ajotuer des champs personnalisés, contenu et de les afficher en front au dessus le boucle de posts
++ Possibilité d'ajouter des champs personnalisés, contenu et de les afficher en front au dessus le boucle de posts principale
 
-Afin de récupérer le contenu et les champs personnalisés de cette page d'archive, nous utiliserons une boucle personnalisé `have_archive_page()` & `the_archive_page()`. Les permaliens et règles d'écritures ne sont aucunement perturbés, WordPress continue d'utiliser l'archive de post type native, nous y ajoutons simplement une boucle supplémentaire.
+Afin de récupérer le contenu et les champs personnalisés de cette page d'archive, nous utiliserons une boucle personnalisée `have_archive_page()` & `the_archive_page()`. Les permaliens et règles d'écritures ne sont pas perturbés, WordPress continue d'utiliser l'archive de post type native. Nous y ajoutons simplement une boucle supplémentaire en récupérant la page dite d'archive.
 
 ## Templating & Section
 
-Chaque gabarit est découpé en différentes `sections` afin de gagner en visibilité.
+Les gabarits de post types, taxonomies (archive/single/term etc...) ont été placés dans le dossier `/templates` afin de gagner en visibilité. Les garabits sont eux découpés en différentes sections dans le dossier `/sections`.
+
+Pour inclure les sections, nous allons passer par une fonction personnalisée. `wpsst_section()` est une sorte de `get_template_part()` avancé avec gestion de `WP_Query` et de `query_vars`. 
 
 Article original: https://hwk.fr/blog/wordpress-afficher-des-templates-parts-avec-des-requetes-parametres-integres
 
-Cette fonction `wpsst_section()` est une sorte de `get_template_part()` avancé avec gestion de `WP_Query` et de `query_vars`. Voici les arguments disponibles:
+Voici les arguments disponibles:
 
 ```
 array(
@@ -97,6 +98,6 @@ array(
 
 ## Requêtes et traitement
 
-La majorité des requêtes vers la base de données sont effectués avant l'affichage front pour optimiser le temps de es dernières. Ainsi, nous stockons les options (adresse, ville, pays, Google Maps API etc...) dans des `query_vars` globales.
+La majorité des requêtes vers la base de données sont effectués avant l'affichage front pour optimiser le temps de traitement. Ainsi, nous stockons les options (adresse, ville, pays, Google Maps API etc...) dans des `query_vars` globales.
 
-pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
+Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
