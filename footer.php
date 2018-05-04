@@ -52,7 +52,7 @@
                 <ul class="social-links">
                     <?php foreach($social_medias as $social_media){ ?>
                         <li class="<?php echo $social_media['type']; ?>">
-                            <a href="<?php echo $social_media['url'] ?>" <?php echo (isset($social_media['target'])) ? 'target="' . $social_media['target'] . '"' : ''; ?>><?php echo (isset($social_media['title'])) ? $social_media['title'] : ''; ?></a>
+                            <a href="<?php echo $social_media['link']['url'] ?>" <?php echo (isset($social_media['link']['target'])) ? 'target="' . $social_media['link']['target'] . '"' : ''; ?>><?php echo (isset($social_media['link']['title'])) ? $social_media['link']['title'] : ''; ?></a>
                         </li>
                     <?php } ?>
                 </ul><!-- end .social-links -->
