@@ -1,4 +1,4 @@
-# WP Smart Start Theme
+# ![](https://i.imgur.com/d4EobC1.png)
 
 Intégration du Smart Theme, excercice WP Media.
 
