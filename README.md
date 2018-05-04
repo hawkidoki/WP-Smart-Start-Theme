@@ -108,7 +108,7 @@ Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta
 
 ## Bonus
 
-+ Google Maps géolocalise désormais l'adresse rentré dans les options.
++ Géolocalisation Google Maps de l'adresse entré dans les options.
 + Les commentaires sont fonctionnels
 + Les medias sociaux en pied de page sont paramètrables via les options
 + Et d'autres petites surprises :)
