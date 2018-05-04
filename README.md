@@ -104,6 +104,6 @@ Par exemple pour le `post_type` `project`, nous ajoutons les arguments `wpsst_te
 
 ## Requêtes et traitements
 
-La majorité des requêtes vers la base de données sont effectués avant l'affichage HTML pour optimiser le temps de traitement. Ainsi, nous stockons les options (adresse, ville, pays, Google Maps API etc...) dans des `query_vars` globales.
+La majorité des requêtes vers la base de données sont effectués avant l'affichage HTML pour optimiser le temps de traitement. Ainsi, nous stockons les options (Adresse, Ville, Pays, Google Maps API etc...) dans des `query_vars` globales.
 
 Pour les posts, nous stockons les données supplémentaires (`terms`, `post_meta` etc...) directement dans l'objet `WP_POST`.
